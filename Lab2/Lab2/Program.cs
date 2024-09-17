@@ -4,76 +4,79 @@ class Program
 {
     static void Main()
     {
+        // Встановлення кодування UTF-8 для підтримки символів псевдографіки
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
         try
         {
-            // Ввод данных
-            Console.Write("Введите значения x и y: ");
+            // Введення даних
+            Console.Write("Введіть значення x і y: ");
             double x = double.Parse(Console.ReadLine());
             double y = double.Parse(Console.ReadLine());
 
-            // Константы
+            // Константи
             double a = 120;
             double b = 1;
 
-            // Переменные для хранения результатов
+            // Змінні для збереження результатів
             double t1, t2;
 
-            // Проверка на ошибки перед вычислением
+            // Перевірка на помилки перед обчисленням
             if (x < 0)
             {
-                throw new ArgumentException("Значение x не может быть отрицательным, так как под знаком квадратного корня.");
+                throw new ArgumentException("Значення x не може бути від'ємним, оскільки під знаком квадратного кореня.");
             }
             if (y == 0)
             {
-                throw new DivideByZeroException("Значение y не может быть равно нулю, так как оно используется в знаменателе.");
+                throw new DivideByZeroException("Значення y не може бути рівним нулю, оскільки воно використовується в знаменнику.");
             }
 
-            // Вычисление t1
+            // Обчислення t1
             t1 = (2 / (Math.Pow(a, 2) * y * Math.Sqrt(x))) + ((3 * Math.Pow(b, 2) * Math.Sqrt(x)) / (y * Math.Pow(a, 4)));
 
-            // Вычисление t2
+            // Обчислення t2
             double ax = a * x;
 
-            // Проверка значений для синуса и тангенса
+            // Перевірка значень для синуса та тангенса
             if (Math.Sin(ax) == 0)
             {
-                throw new ArithmeticException("Синус ax равен нулю, что вызвало деление на ноль.");
+                throw new ArithmeticException("Синус ax дорівнює нулю, що спричинило ділення на нуль.");
             }
 
             if (Math.Tan(ax / 2) <= 0)
             {
-                throw new ArithmeticException("Тангенс аргумента ax/2 принимает недопустимое значение.");
+                throw new ArithmeticException("Тангенс аргументу ax/2 приймає недопустиме значення.");
             }
 
             t2 = (1 / a) * (Math.Log(Math.Tan(ax / 2)) - (1 / Math.Sin(ax)));
 
-            // Вывод результатов
+            // Виведення результатів
             Console.WriteLine($"t1 = {t1}");
             Console.WriteLine($"t2 = {t2}");
         }
         catch (FormatException)
         {
-            Console.WriteLine("Ошибка: введенные данные не являются числовыми значениями.");
+            Console.WriteLine("Помилка: введені дані не є числовими значеннями.");
         }
         catch (DivideByZeroException e)
         {
-            Console.WriteLine($"Ошибка: {e.Message}");
+            Console.WriteLine($"Помилка: {e.Message}");
         }
         catch (ArgumentException e)
         {
-            Console.WriteLine($"Ошибка: {e.Message}");
+            Console.WriteLine($"Помилка: {e.Message}");
         }
         catch (ArithmeticException e)
         {
-            Console.WriteLine($"Математическая ошибка: {e.Message}");
+            Console.WriteLine($"Математична помилка: {e.Message}");
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Произошла непредвиденная ошибка: {e.Message}");
+            Console.WriteLine($"Виникла непередбачена помилка: {e.Message}");
         }
         finally
         {
-            Console.WriteLine("Завершение программы.");
+            Console.WriteLine("Завершення програми.");
         }
     }
 }

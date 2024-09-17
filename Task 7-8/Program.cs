@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Встановлення кодування UTF-8 для підтримки символів псевдографіки
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
         // Введення параметрів з клавіатури
         Console.Write("Введіть кількість членів ряду: ");
         int maxTerms = int.Parse(Console.ReadLine());

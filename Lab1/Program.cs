@@ -4,23 +4,26 @@ class Program
 {
     static void Main()
     {
-        // Ввод количества строк
-        Console.Write("Введите количество сплавов: ");
+        // Встановлення кодування UTF-8 для підтримки символів псевдографіки
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        // Введення кількості сплавів
+        Console.Write("Введіть кількість сплавів: ");
         int count = int.Parse(Console.ReadLine());
 
-        // Массивы для хранения данных
+        // Масиви для збереження даних
         string[] alloys = new string[count];
         double[] resistances = new double[count];
         double[] tempCoefficients = new double[count];
         int[] maxTemperatures = new int[count];
 
-        // Ввод данных
+        // Введення даних
         for (int i = 0; i < count; i++)
         {
-            Console.WriteLine($"Введите данные для сплава {i + 1}:");
-            Console.Write("Название сплава: ");
+            Console.WriteLine($"Введіть дані для сплаву {i + 1}:");
+            Console.Write("Назва сплаву: ");
             alloys[i] = Console.ReadLine();
-            Console.Write("Омір (ом*мкм^2/м): ");
+            Console.Write("Омічний опір (ом*кв.мм/м): ");
             resistances[i] = double.Parse(Console.ReadLine());
             Console.Write("Температурний коефіцієнт опору (1/град): ");
             tempCoefficients[i] = double.Parse(Console.ReadLine());
@@ -28,33 +31,33 @@ class Program
             maxTemperatures[i] = int.Parse(Console.ReadLine());
         }
 
-        // Отрисовка таблицы
+        // Відображення таблиці
         DrawTable(alloys, resistances, tempCoefficients, maxTemperatures);
 
-        // Секция с единицами измерения
+        // Секція з одиницями вимірювання
         DrawUnitsSection();
     }
 
     static void DrawTable(string[] alloys, double[] resistances, double[] tempCoefficients, int[] maxTemperatures)
     {
-        // Заголовки колонок
-        var headers = new string [] {
-            "Сплав", "Омір (ом*кв.мм/м)", "Температурний коефіцієнт опору (1/град)", "Максимальна температура (°C)"
+        // Заголовки стовпців
+        var headers = new string[] {
+            "Сплав", "Омічний опір (ом*кв.мм/м)", "Температурний коефіцієнт опору (1/град)", "Максимальна температура (°C)"
         };
 
         Console.ForegroundColor = ConsoleColor.Cyan;
-        // Отрисовка верхней границы таблицы
+        // Відображення верхньої межі таблиці
         Console.WriteLine("┌───────────────────┬──────────────────────────┬──────────────────────────────────────────────┬──────────────────────────────┐");
 
         Console.ForegroundColor = ConsoleColor.DarkCyan;
-        // Отрисовка заголовков
+        // Відображення заголовків
         Console.WriteLine($"│ {headers[0],-17} │ {headers[1],-25}│ {headers[2],-44} │ {headers[3],-29}│");
 
         Console.ForegroundColor = ConsoleColor.Cyan;
-        // Отрисовка разделительной линии
+        // Відображення роздільної лінії
         Console.WriteLine("├───────────────────┼──────────────────────────┼──────────────────────────────────────────────┼──────────────────────────────┤");
 
-        // Отрисовка строк данных
+        // Відображення рядків даних
         for (int i = 0; i < alloys.Length; i++)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -62,21 +65,21 @@ class Program
         }
 
         Console.ForegroundColor = ConsoleColor.Cyan;
-        // Отрисовка линии перед секцией с единицами измерения
+        // Відображення лінії перед секцією з одиницями вимірювання
         Console.WriteLine("├───────────────────┴──────────────────────────┴──────────────────────────────────────────────┴──────────────────────────────┤");
     }
 
     static void DrawUnitsSection()
     {
-        // Секция с единицами измерения
-        string units = "Одиниці вимірювання: опір – ом*кв.мм/м; температурний коефіцієнт опору – 1/град; температура – рад.С";
+        // Секція з одиницями вимірювання
+        string units = "Одиниці вимірювання: опір – ом*кв.мм/м; температурний коефіцієнт опору – 1/град; температура – °C";
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-        // Отрисовка секции с единицами измерения
+        // Відображення секції з одиницями вимірювання
         Console.WriteLine($"│ {units,-123}│");
 
         Console.ForegroundColor = ConsoleColor.Cyan;
-        // Нижняя граница таблицы
+        // Нижня межа таблиці
         Console.WriteLine("└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘");
     }
 }
