@@ -7,43 +7,77 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Ініціалізація масиву з випадковими числами
-        Random rand = new Random();
-        int[] array = new int[100];
-
-        for (int i = 0; i < array.Length; i++)
+        try
         {
-            array[i] = rand.Next(-100, 101); // Заповнення масиву числами від -100 до 100
+            // Запит розміру масиву від користувача
+            Console.Write("Введіть розмір масиву: ");
+            int arraySize = int.Parse(Console.ReadLine());
+
+            if (arraySize <= 0)
+            {
+                throw new ArgumentException("Розмір масиву повинен бути більше нуля.");
+            }
+
+            // Ініціалізація масиву з випадковими числами заданого розміру
+            Random rand = new Random();
+            int[] array = new int[arraySize];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rand.Next(-100, 101); // Заповнення масиву числами від -100 до 100
+            }
+
+            // Виведення початкового масиву
+            Console.WriteLine("Початковий масив:");
+            PrintArray(array);
+
+            // Розділяємо додатні і від'ємні елементи
+            var positiveElements = array.Where(x => x > 0).ToArray();
+            var negativeElements = array.Where(x => x < 0).ToArray();
+
+            // Перевірка на наявність елементів, щоб уникнути помилок ділення
+            if (positiveElements.Length == 0 || negativeElements.Length == 0)
+            {
+                throw new InvalidOperationException("У масиві немає додатних або від'ємних елементів для обчислення середнього.");
+            }
+
+            // Обчислюємо середнє для додатних і від'ємних елементів
+            double avgPositive = positiveElements.Average();
+            double avgNegative = negativeElements.Average();
+
+            // Обмежуємо значення елементів масиву
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > avgPositive)
+                {
+                    array[i] = (int)avgPositive;
+                }
+                else if (array[i] < avgNegative)
+                {
+                    array[i] = (int)avgNegative;
+                }
+            }
+
+            // Виведення результату
+            Console.WriteLine("\nМасив після обмеження значень:");
+            PrintArray(array);
         }
-
-        // Виведення початкового масиву
-        Console.WriteLine("Початковий масив:");
-        PrintArray(array);
-
-        // Розділяємо додатні і від'ємні елементи
-        var positiveElements = array.Where(x => x > 0).ToArray();
-        var negativeElements = array.Where(x => x < 0).ToArray();
-
-        // Обчислюємо середнє для додатних і від'ємних елементів
-        double avgPositive = positiveElements.Length > 0 ? positiveElements.Average() : 0;
-        double avgNegative = negativeElements.Length > 0 ? negativeElements.Average() : 0;
-
-        // Обмежуємо значення елементів масиву
-        for (int i = 0; i < array.Length; i++)
+        catch (FormatException)
         {
-            if (array[i] > avgPositive)
-            {
-                array[i] = (int)avgPositive;
-            }
-            else if (array[i] < avgNegative)
-            {
-                array[i] = (int)avgNegative;
-            }
+            Console.WriteLine("Помилка: введені дані не є числовими значеннями.");
         }
-
-        // Виведення результату
-        Console.WriteLine("\nМасив після обмеження значень:");
-        PrintArray(array);
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Помилка: {ex.Message}");
+        }
+        catch (InvalidOperationException ex)
+        {
+            Console.WriteLine($"Помилка: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Непередбачена помилка: {ex.Message}");
+        }
     }
 
     // Метод для виведення масиву на екран
