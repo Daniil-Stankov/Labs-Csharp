@@ -13,17 +13,19 @@ class Program
         Console.Write("Введіть кількість стовпців матриці: ");
         int cols = int.Parse(Console.ReadLine());
 
+        int? firstPositiveRowIndex = null;
+
         // Ініціалізація матриці
         int[][] matrix = new int[rows][];
         Random rand = new Random(); // Генератор випадкових чисел
 
-        // Заповнення матриці випадковими числами в діапазоні від 0 до 10
+        // Заповнення матриці випадковими числами в діапазоні від -100 до 5
         for (int i = 0; i < rows; i++)
         {
             matrix[i] = new int[cols];
             for (int j = 0; j < cols; j++)
             {
-                matrix[i][j] = rand.Next(0, 11); // Випадкові числа від 0 до 10
+                matrix[i][j] = rand.Next(-100, 6); // Випадкові числа від -100 до 5
             }
         }
 
@@ -33,34 +35,54 @@ class Program
         {
             for (int j = 0; j < cols; j++)
             {
-                Console.Write($"{matrix[i][j],3} ");
+                Console.Write($"{matrix[i][j],4} ");
             }
             Console.WriteLine();
         }
 
-        // Введення порогового значення для порівняння з середнім арифметичним
-        Console.Write("\nВведіть порогове значення: ");
-        double threshold = double.Parse(Console.ReadLine());
-
-        // Підрахунок кількості рядків, середнє арифметичне яких менше за порогове значення
-        int count = 0;
+        // Пошук першого рядка, що містить хоча б один додатний елемент
         for (int i = 0; i < rows; i++)
         {
-            double sum = 0;
             for (int j = 0; j < cols; j++)
             {
-                sum += matrix[i][j];
+                if (matrix[i][j] > 0)
+                {
+                    firstPositiveRowIndex = i + 1; // Додаємо 1, щоб нумерація починалася з 1
+                    break;
+                }
             }
-
-            double average = sum / cols;
-
-            if (average < threshold)
-            {
-                count++;
-            }
+            if (firstPositiveRowIndex != null)
+                break;
         }
 
         // Виведення результату
-        Console.WriteLine($"\nКількість рядків, середнє арифметичне яких менше за {threshold}: {count}");
+        if (firstPositiveRowIndex != null)
+        {
+            Console.WriteLine($"\nПерший рядок, який містить хоча б один додатний елемент: {firstPositiveRowIndex}");
+        }
+        else
+        {
+            Console.WriteLine("\nУ матриці немає додатних елементів.");
+        }
+
+        // Виведення всіх додатних елементів матриці
+        Console.WriteLine("\nУсі додатні елементи матриці:");
+        bool hasPositiveElements = false;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (matrix[i][j] > 0)
+                {
+                    Console.Write($"{matrix[i][j],4} ");
+                    hasPositiveElements = true;
+                }
+            }
+        }
+
+        if (!hasPositiveElements)
+        {
+            Console.WriteLine("Додатні елементи відсутні.");
+        }
     }
 }
