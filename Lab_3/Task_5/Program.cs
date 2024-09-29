@@ -37,6 +37,8 @@ class Program
 
     static void Main()
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
         // Введення рядка
         Console.Write("Введіть текстовий рядок: ");
         string input = Console.ReadLine();
