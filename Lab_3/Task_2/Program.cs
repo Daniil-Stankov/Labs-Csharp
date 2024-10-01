@@ -5,14 +5,12 @@ class Program
     // Функція для об'єднання двох рядків без використання бібліотечних функцій
     static string ConcatStrings(string str1, string str2)
     {
-        // Перевірка, чи не є будь-який з рядків null або порожнім
         if (str1 == null) str1 = "";
         if (str2 == null) str2 = "";
 
         // Довжина нового рядка буде рівна сумі довжин двох рядків
         int newLength = str1.Length + str2.Length;
 
-        // Створення нового масиву символів для збереження результату
         char[] result = new char[newLength];
 
         // Копіюємо символи першого рядка
@@ -21,7 +19,7 @@ class Program
             result[i] = str1[i];
         }
 
-        // Копіюємо символи другого рядка в кінець
+        // Копіюємо символи другого рядка
         for (int i = 0; i < str2.Length; i++)
         {
             result[str1.Length + i] = str2[i];

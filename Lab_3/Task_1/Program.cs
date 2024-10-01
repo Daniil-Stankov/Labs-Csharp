@@ -5,7 +5,6 @@ class Program
     // Функція переведення з десяткової системи у шістнадцяткову
     static string DecimalToHexadecimal(string decimalString)
     {
-        // Перевірка на коректність введеного значення
         if (!IsValidDecimalString(decimalString))
         {
             return "Некоректне десяткове число!";
@@ -37,7 +36,7 @@ class Program
         if (string.IsNullOrEmpty(s))
             return false;
 
-        // Перевірка кожного символа, чи це число
+        // Перевірка кожного символа, чи число
         foreach (char c in s)
         {
             if (c < '0' || c > '9')
@@ -48,7 +47,7 @@ class Program
         return true;
     }
 
-    // Функція для перетворення рядка у ціле число (без використання int.Parse)
+    // Функція для перетворення рядка у ціле число
     static int StringToInt(string s)
     {
         int result = 0;
@@ -76,7 +75,7 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Введення десяткового числа у вигляді рядка
+        // Введення десяткового числа
         Console.Write("Введіть десяткове число: ");
         string decimalString = Console.ReadLine();
 

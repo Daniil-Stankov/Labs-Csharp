@@ -14,7 +14,7 @@ class Program
         // Створюємо новий масив символів для зберігання результату
         char[] result = new char[input.Length * 2]; // Максимальний розмір, якщо всі символи будуть повторені
 
-        int index = 0; // Індекс для заповнення масиву результату
+        int index = 0;
 
         // Проходимо по кожному символу в рядку
         for (int i = 0; i < input.Length; i++)
@@ -28,7 +28,7 @@ class Program
         }
 
         // Перетворюємо масив назад у рядок і повертаємо результат
-        return new string(result, 0, index); // Обрізаємо масив до заповненої довжини
+        return new string(result, 0, index); 
     }
 
     static void Main()

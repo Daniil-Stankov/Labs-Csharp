@@ -14,7 +14,6 @@ class Program
         // Створюємо змінну для збереження абревіатури
         string abbreviation = "";
 
-        // Розбиваємо рядок на слова за пробілами
         bool isNewWord = true;
         for (int i = 0; i < input.Length; i++)
         {

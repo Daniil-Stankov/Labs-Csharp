@@ -72,14 +72,14 @@ class Program
         Console.Write("Введіть текстовий рядок: ");
         string input = Console.ReadLine();
 
-        // а) Підрахунок кількості чисел у тексті
+        // Підрахунок кількості чисел у тексті
         int numberCount = CountNumbers(input);
         Console.WriteLine($"Кількість чисел у тексті: {numberCount}");
 
-        // б) Виведення всіх слів, що складаються тільки з латинських літер
+        // Виведення всіх слів, що складаються тільки з латинських літер
         PrintLatinWords(input);
 
-        // в) Видалення кожного другого слова
+        // Видалення кожного другого слова
         string result = RemoveEverySecondWord(input);
         Console.WriteLine($"Текст після видалення кожного другого слова: {result}");
     }
