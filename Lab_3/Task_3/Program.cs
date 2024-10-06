@@ -1,33 +1,28 @@
 ﻿using System;
+using System.IO;
 
 class Program
 {
-    // Функція для вставки знаку питання після кожної букви
     static string InsertQuestionMarkAfterLetters(string input)
     {
-        // Перевірка на null або порожній рядок
         if (input == null || input.Length == 0)
         {
-            return input; // Якщо рядок порожній, повертаємо його без змін
+            return input;
         }
 
-        // Створюємо новий масив символів для зберігання результату
-        char[] result = new char[input.Length * 2]; // Кожна літера отримає додатковий символ '?'
+        char[] result = new char[input.Length * 2];
 
         int index = 0;
 
-        // Проходимо по кожному символу в рядку
         for (int i = 0; i < input.Length; i++)
         {
-            result[index++] = input[i]; // Копіюємо символ
-            // Якщо символ є буквою, додаємо знак питання
+            result[index++] = input[i];
             if (char.IsLetter(input[i]))
             {
                 result[index++] = '?';
             }
         }
 
-        // Перетворюємо масив назад у рядок і повертаємо результат
         return new string(result, 0, index);
     }
 
@@ -35,14 +30,24 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Введення рядка
-        Console.Write("Введіть текстовий рядок: ");
-        string input = Console.ReadLine();
+        // Читання з файлу
+        string inputFilePath = @"D:\учеба\DOtNet (3 курс)\Repos\Lab_3\Task_3\input3.txt";
+        string outputFilePath = @"D:\учеба\DOtNet (3 курс)\Repos\Lab_3\Task_3\output3.txt";
 
-        // Виклик функції для вставки знаку питання
-        string result = InsertQuestionMarkAfterLetters(input);
+        if (File.Exists(inputFilePath))
+        {
+            string input = File.ReadAllText(inputFilePath).Trim();
 
-        // Виведення результату
-        Console.WriteLine($"Результат: {result}");
+            // Вставка знаку питання
+            string result = InsertQuestionMarkAfterLetters(input);
+
+            // Запис результату в файл
+            File.WriteAllText(outputFilePath, $"Результат: {result}");
+            Console.WriteLine("Результат записано у файл output3.txt");
+        }
+        else
+        {
+            Console.WriteLine("Файл не знайдено.");
+        }
     }
 }

@@ -1,31 +1,26 @@
 ﻿using System;
+using System.IO;
 
 class Program
 {
-    // Функція для об'єднання двох рядків без використання бібліотечних функцій
     static string ConcatStrings(string str1, string str2)
     {
         if (str1 == null) str1 = "";
         if (str2 == null) str2 = "";
 
-        // Довжина нового рядка буде рівна сумі довжин двох рядків
         int newLength = str1.Length + str2.Length;
-
         char[] result = new char[newLength];
 
-        // Копіюємо символи першого рядка
         for (int i = 0; i < str1.Length; i++)
         {
             result[i] = str1[i];
         }
 
-        // Копіюємо символи другого рядка
         for (int i = 0; i < str2.Length; i++)
         {
             result[str1.Length + i] = str2[i];
         }
 
-        // Перетворюємо масив символів назад у рядок
         return new string(result);
     }
 
@@ -33,17 +28,33 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Введення двох рядків
-        Console.Write("Введіть перший рядок: ");
-        string str1 = Console.ReadLine();
+        // Читання з файлу
+        string inputFilePath = @"D:\учеба\DOtNet (3 курс)\Repos\Lab_3\Task_2\input2.txt";
+        string outputFilePath = @"D:\учеба\DOtNet (3 курс)\Repos\Lab_3\Task_2\output2.txt";
 
-        Console.Write("Введіть другий рядок: ");
-        string str2 = Console.ReadLine();
+        if (File.Exists(inputFilePath))
+        {
+            string[] lines = File.ReadAllLines(inputFilePath);
+            if (lines.Length >= 2)
+            {
+                string str1 = lines[0].Trim();
+                string str2 = lines[1].Trim();
 
-        // Виклик функції для додавання другого рядка в кінець першого
-        string result = ConcatStrings(str1, str2);
+                // Об'єднання рядків
+                string result = ConcatStrings(str1, str2);
 
-        // Виведення результату
-        Console.WriteLine($"Результат об'єднання: {result}");
+                // Запис результату в файл
+                File.WriteAllText(outputFilePath, $"Результат об'єднання: {result}");
+                Console.WriteLine("Результат записано у файл output2.txt");
+            }
+            else
+            {
+                Console.WriteLine("У файлі повинно бути як мінімум два рядки.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Файл не знайдено.");
+        }
     }
 }

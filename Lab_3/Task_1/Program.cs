@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 class Program
 {
@@ -10,7 +11,6 @@ class Program
             return "Некоректне десяткове число!";
         }
 
-        // Перетворення рядка в ціле число (без використання стандартної функції int.Parse)
         int decimalNumber = StringToInt(decimalString);
 
         if (decimalNumber == 0)
@@ -18,7 +18,6 @@ class Program
             return "0";
         }
 
-        // Переведення в шістнадцятковий формат
         string hexResult = "";
         while (decimalNumber > 0)
         {
@@ -30,13 +29,11 @@ class Program
         return hexResult;
     }
 
-    // Функція перевірки чи є рядок коректним цілим числом
     static bool IsValidDecimalString(string s)
     {
         if (string.IsNullOrEmpty(s))
             return false;
 
-        // Перевірка кожного символа, чи число
         foreach (char c in s)
         {
             if (c < '0' || c > '9')
@@ -47,7 +44,6 @@ class Program
         return true;
     }
 
-    // Функція для перетворення рядка у ціле число
     static int StringToInt(string s)
     {
         int result = 0;
@@ -58,7 +54,6 @@ class Program
         return result;
     }
 
-    // Функція для перетворення залишку на відповідний шістнадцятковий символ
     static char GetHexCharacter(int remainder)
     {
         if (remainder < 10)
@@ -75,14 +70,26 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Введення десяткового числа
-        Console.Write("Введіть десяткове число: ");
-        string decimalString = Console.ReadLine();
+        // Повний шлях до файлу (замініть на відповідний)
+        string inputFilePath = @"D:\учеба\DOtNet (3 курс)\Repos\Lab_3\Task_1\input1.txt";
+        string outputFilePath = @"D:\учеба\DOtNet (3 курс)\Repos\Lab_3\Task_1\output1.txt";
 
-        // Виклик функції для переведення в шістнадцятковий формат
-        string hexResult = DecimalToHexadecimal(decimalString);
+        // Перевірка наявності файлу
+        if (File.Exists(inputFilePath))
+        {
+            // Читання з файлу
+            string decimalString = File.ReadAllText(inputFilePath).Trim();
 
-        // Виведення результату
-        Console.WriteLine($"Шістнадцяткове представлення: {hexResult}");
+            // Перетворення у шістнадцяткову систему
+            string hexResult = DecimalToHexadecimal(decimalString);
+
+            // Запис результату в файл
+            File.WriteAllText(outputFilePath, $"Шістнадцяткове представлення: {hexResult}");
+            Console.WriteLine("Результат записано у файл output1.txt");
+        }
+        else
+        {
+            Console.WriteLine($"Файл {inputFilePath} не знайдено.");
+        }
     }
 }
