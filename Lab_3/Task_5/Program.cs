@@ -1,37 +1,34 @@
 ﻿using System;
+using System.IO;
 
 class Program
 {
     // Функція для складання абревіатури з перших букв слів
     static string CreateAbbreviation(string input)
     {
-        // Перевірка на null або порожній рядок
         if (string.IsNullOrEmpty(input))
         {
-            return ""; // Якщо рядок порожній, повертаємо порожню абревіатуру
+            return "";
         }
 
-        // Створюємо змінну для збереження абревіатури
         string abbreviation = "";
-
         bool isNewWord = true;
+
         for (int i = 0; i < input.Length; i++)
         {
             if (isNewWord && char.IsLetter(input[i]))
             {
-                abbreviation += input[i]; // Додаємо першу букву кожного слова
-                isNewWord = false; // Позначаємо, що ми всередині слова
+                abbreviation += input[i];
+                isNewWord = false;
             }
 
-            // Перевіряємо, коли починається нове слово
             if (input[i] == ' ')
             {
                 isNewWord = true;
             }
         }
 
-        // Повертаємо отриману абревіатуру
-        return abbreviation.ToUpper(); // Перетворюємо в верхній регістр
+        return abbreviation.ToUpper();
     }
 
     static void Main()
@@ -45,7 +42,19 @@ class Program
         // Виклик функції для складання абревіатури
         string result = CreateAbbreviation(input);
 
-        // Виведення результату
-        Console.WriteLine($"Абревіатура: {result}");
+        // Запис результату в двійковий файл
+        string binaryFilePath = "output5.dat";
+        using (BinaryWriter writer = new BinaryWriter(File.Open(binaryFilePath, FileMode.Create)))
+        {
+            writer.Write(result);
+        }
+
+        // Читання з двійкового файлу та виведення на екран
+        Console.WriteLine("Зміст двійкового файлу:");
+        using (BinaryReader reader = new BinaryReader(File.Open(binaryFilePath, FileMode.Open)))
+        {
+            string readResult = reader.ReadString();
+            Console.WriteLine(readResult);
+        }
     }
 }

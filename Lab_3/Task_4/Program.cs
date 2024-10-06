@@ -1,34 +1,29 @@
 ﻿using System;
+using System.IO;
 
 class Program
 {
     // Функція для повторення кожного символу, окрім знака питання
     static string RepeatCharactersExceptQuestionMark(string input)
     {
-        // Перевірка на null або порожній рядок
         if (input == null || input.Length == 0)
         {
             return input; // Якщо рядок порожній, повертаємо його без змін
         }
 
-        // Створюємо новий масив символів для зберігання результату
-        char[] result = new char[input.Length * 2]; // Максимальний розмір, якщо всі символи будуть повторені
-
+        char[] result = new char[input.Length * 2];
         int index = 0;
 
-        // Проходимо по кожному символу в рядку
         for (int i = 0; i < input.Length; i++)
         {
-            result[index++] = input[i]; // Додаємо символ до масиву
-            // Якщо символ не '?', повторюємо його
+            result[index++] = input[i];
             if (input[i] != '?')
             {
                 result[index++] = input[i];
             }
         }
 
-        // Перетворюємо масив назад у рядок і повертаємо результат
-        return new string(result, 0, index); 
+        return new string(result, 0, index);
     }
 
     static void Main()
@@ -42,7 +37,19 @@ class Program
         // Виклик функції для повторення кожного символу, окрім знака питання
         string result = RepeatCharactersExceptQuestionMark(input);
 
-        // Виведення результату
-        Console.WriteLine($"Результат: {result}");
+        // Запис результату в двійковий файл
+        string binaryFilePath = "output4.dat";
+        using (BinaryWriter writer = new BinaryWriter(File.Open(binaryFilePath, FileMode.Create)))
+        {
+            writer.Write(result);
+        }
+
+        // Читання з двійкового файлу та виведення на екран
+        Console.WriteLine("Зміст двійкового файлу:");
+        using (BinaryReader reader = new BinaryReader(File.Open(binaryFilePath, FileMode.Open)))
+        {
+            string readResult = reader.ReadString();
+            Console.WriteLine(readResult);
+        }
     }
 }
