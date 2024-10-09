@@ -11,6 +11,12 @@ class Category
         Name = name;
     }
 
+    // Метод для зміни назви категорії
+    public void SetCategoryName(string newName)
+    {
+        Name = newName;
+    }
+
     public void ShowCategory()
     {
         Console.WriteLine($"Категорія: {Name}");
@@ -54,6 +60,12 @@ class Product
 
     public int GetQuantity() => quantity;
     public void SetQuantity(int quantity) => this.quantity = quantity;
+
+    // Метод для зміни назви категорії продукту
+    public void SetCategoryName(string newCategoryName)
+    {
+        category.SetCategoryName(newCategoryName);
+    }
 
     // Метод для виведення інформації про товар разом з категорією
     public void Show()
@@ -135,6 +147,10 @@ class Program
         Console.Write("Введіть нову кількість (або натисніть Enter для пропуску): ");
         string newQuantityInput = Console.ReadLine();
         if (int.TryParse(newQuantityInput, out int newQuantity)) product.SetQuantity(newQuantity);
+
+        Console.Write("Введіть нову категорію (або натисніть Enter для пропуску): ");
+        string newCategoryInput = Console.ReadLine();
+        if (!string.IsNullOrEmpty(newCategoryInput)) product.SetCategoryName(newCategoryInput);
     }
 
     static void Main()

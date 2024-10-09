@@ -36,7 +36,7 @@ class Product
     public Supplier Supplier { get; set; }
 
     // Конструктор класу Product
-    public Product(string name, string manufacturer, double price, int shelfLife, int quantity, Supplier supplier)
+    public Product(string name, string manufacturer, double price, int shelfLife, int quantity, Supplier supplier = null)
     {
         this.name = name;
         this.manufacturer = manufacturer;
@@ -50,7 +50,28 @@ class Product
     public void Show()
     {
         Console.WriteLine($"Назва: {name}, Виробник: {manufacturer}, Ціна: {price}, Термін зберігання: {shelfLife} днів, Кількість: {quantity}");
-        Supplier?.Show(); // Якщо постачальник існує, показуємо його
+        if (Supplier != null)
+        {
+            Supplier.Show(); // Якщо постачальник існує, показуємо його
+        }
+        else
+        {
+            Console.WriteLine("Постачальник: не призначено");
+        }
+    }
+
+    // Метод для додавання або заміни постачальника
+    public void AssignSupplier(Supplier supplier)
+    {
+        Supplier = supplier;
+        Console.WriteLine($"Постачальник призначений для продукту \"{name}\".");
+    }
+
+    // Метод для видалення постачальника
+    public void RemoveSupplier()
+    {
+        Supplier = null;
+        Console.WriteLine($"Постачальника видалено з продукту \"{name}\".");
     }
 }
 
@@ -70,8 +91,7 @@ class Program
         return new Supplier(companyName, address, phoneNumber);
     }
 
-    // Метод для створення продукту через введення параметрів користувачем
-    static Product CreateProductFromUserInput()
+    static Product CreateProductFromUserInput(Supplier supplier = null)
     {
         Console.Write("Введіть назву продукту: ");
         string name = Console.ReadLine();
@@ -100,10 +120,6 @@ class Program
             Console.Write("Неправильний формат кількості. Введіть знову: ");
         }
 
-        // Створення постачальника для продукту
-        Console.WriteLine("Додайте інформацію про постачальника:");
-        Supplier supplier = CreateSupplierFromUserInput();
-
         return new Product(name, manufacturer, price, shelfLife, quantity, supplier);
     }
 
@@ -116,12 +132,12 @@ class Program
         Supplier supplier1 = new Supplier("Компанія 1", "Київ, вул. Хрещатик 1", "123-456-789");
         Supplier supplier2 = new Supplier("Компанія 2", "Львів, пр. Свободи 20", "987-654-321");
 
-        // Попередньо створені продукти з постачальниками
+        // Створюємо продукти без постачальників
         List<Product> products = new List<Product>
         {
-            new Product("Молоко", "Виробник 1", 25.5, 7, 100, supplier1),
-            new Product("Хліб", "Виробник 2", 10, 2, 200, supplier2),
-            new Product("Йогурт", "Виробник 1", 18, 10, 50, supplier1)
+            new Product("Молоко", "Виробник 1", 25.5, 7, 100),
+            new Product("Хліб", "Виробник 2", 10, 2, 200),
+            new Product("Йогурт", "Виробник 1", 18, 10, 50)
         };
 
         // Меню для користувача
@@ -129,8 +145,10 @@ class Program
         {
             Console.WriteLine("\nОберіть дію:");
             Console.WriteLine("1. Вивести всі продукти");
-            Console.WriteLine("2. Додати новий продукт");
-            Console.WriteLine("3. Вийти");
+            Console.WriteLine("2. Призначити постачальника для продукту");
+            Console.WriteLine("3. Видалити постачальника з продукту");
+            Console.WriteLine("4. Додати новий продукт");
+            Console.WriteLine("5. Вийти");
 
             string choice = Console.ReadLine();
 
@@ -143,10 +161,37 @@ class Program
             }
             else if (choice == "2")
             {
+                Console.Write("Введіть номер продукту для призначення постачальника: ");
+                int index = int.Parse(Console.ReadLine());
+                if (index >= 0 && index < products.Count)
+                {
+                    Supplier supplier = CreateSupplierFromUserInput();
+                    products[index].AssignSupplier(supplier);
+                }
+                else
+                {
+                    Console.WriteLine("Неправильний індекс.");
+                }
+            }
+            else if (choice == "3")
+            {
+                Console.Write("Введіть номер продукту для видалення постачальника: ");
+                int index = int.Parse(Console.ReadLine());
+                if (index >= 0 && index < products.Count)
+                {
+                    products[index].RemoveSupplier();
+                }
+                else
+                {
+                    Console.WriteLine("Неправильний індекс.");
+                }
+            }
+            else if (choice == "4")
+            {
                 products.Add(CreateProductFromUserInput());
                 Console.WriteLine("Новий продукт додано.");
             }
-            else if (choice == "3")
+            else if (choice == "5")
             {
                 break;
             }
