@@ -149,6 +149,9 @@ class Program
     // Тестування класу Turn
     static void Main()
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
+
         // Створення масиву об'єктів класу Turn
         int queueCount = 3;  // кількість черг
         Turn[] queues = new Turn[queueCount];
