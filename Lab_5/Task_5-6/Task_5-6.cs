@@ -33,15 +33,13 @@ namespace Task_5_6
             pictureBox3.Size = new Size(200, 100);
             pictureBox3.Location = new Point(300, 10); // Правое изображение
 
-            // Добавляем их на форму
             this.Controls.Add(pictureBox1);
             this.Controls.Add(pictureBox2);
             this.Controls.Add(pictureBox3);
-
-            // Для примера можно загрузить изображения
-            pictureBox1.Image = Image.FromFile("D:\\учеба\\DOtNet (3 курс)\\Repos\\Lab_5\\Task_5-6\\image1.jpg");
-            pictureBox2.Image = Image.FromFile("D:\\учеба\\DOtNet (3 курс)\\Repos\\Lab_5\\Task_5-6\\image2.jpg");
-            pictureBox3.Image = Image.FromFile("D:\\учеба\\DOtNet (3 курс)\\Repos\\Lab_5\\Task_5-6\\image3.jpg");
+ 
+            pictureBox1.Image = Image.FromFile("..\\..\\Resources\\image1.jpg");
+            pictureBox2.Image = Image.FromFile("..\\..\\Resources\\image2.jpg");
+            pictureBox3.Image = Image.FromFile("..\\..\\Resources\\image3.jpg");
 
             // Настройка режима отображения изображения
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
