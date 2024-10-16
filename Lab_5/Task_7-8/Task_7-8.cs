@@ -34,11 +34,11 @@ namespace Task_7_8
             Button button5 = new Button { Text = "but5" };
 
             // Розміщуємо кнопки на панелі відповідно до вашої схеми
-            tableLayoutPanel.Controls.Add(button1, 0, 0); // but1 в (0,0)
-            tableLayoutPanel.Controls.Add(button5, 0, 1); // but5 в (0,1)
-            tableLayoutPanel.Controls.Add(button3, 1, 2); // but3 в (1,2)
-            tableLayoutPanel.Controls.Add(button4, 2, 0); // but4 в (2,0)
-            tableLayoutPanel.Controls.Add(button2, 2, 1); // but2 в (2,1)
+            tableLayoutPanel.Controls.Add(button1, 0, 0); 
+            tableLayoutPanel.Controls.Add(button5, 0, 1); 
+            tableLayoutPanel.Controls.Add(button3, 1, 2);
+            tableLayoutPanel.Controls.Add(button4, 2, 0);
+            tableLayoutPanel.Controls.Add(button2, 2, 1);
 
             // Додаємо TableLayoutPanel на форму
             this.Controls.Add(tableLayoutPanel);
