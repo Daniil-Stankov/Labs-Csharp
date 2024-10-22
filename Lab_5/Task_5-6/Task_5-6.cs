@@ -23,15 +23,15 @@ namespace Task_5_6
             // Задаем размеры и положение PictureBox'ов
             PictureBox pictureBox1 = new PictureBox();
             pictureBox1.Size = new Size(210, 50);
-            pictureBox1.Location = new Point(20, 60);  // Левое изображение
+            pictureBox1.Location = new Point(20, 60);  // Ліве зображення
 
             PictureBox pictureBox2 = new PictureBox();
             pictureBox2.Size = new Size(50, 100);
-            pictureBox2.Location = new Point(240, 10); // Центральное изображение
+            pictureBox2.Location = new Point(240, 10); // Центральне зображення
 
             PictureBox pictureBox3 = new PictureBox();
-            pictureBox3.Size = new Size(200, 50);
-            pictureBox3.Location = new Point(300, 10); // Правое изображение
+            pictureBox3.Size = new Size(150, 50);
+            pictureBox3.Location = new Point(300, 60); // Праве зображення
 
             this.Controls.Add(pictureBox1);
             this.Controls.Add(pictureBox2);
