@@ -30,7 +30,7 @@ namespace Task_5_6
             pictureBox2.Location = new Point(240, 10); // Центральное изображение
 
             PictureBox pictureBox3 = new PictureBox();
-            pictureBox3.Size = new Size(200, 100);
+            pictureBox3.Size = new Size(200, 50);
             pictureBox3.Location = new Point(300, 10); // Правое изображение
 
             this.Controls.Add(pictureBox1);
