@@ -69,6 +69,7 @@
             // 
             // radioButton2
             // 
+            this.radioButton2.Checked = true;
             this.radioButton2.Location = new System.Drawing.Point(24, 42);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -87,7 +88,6 @@
             this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radioButton1.Size = new System.Drawing.Size(66, 17);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Автобус";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
