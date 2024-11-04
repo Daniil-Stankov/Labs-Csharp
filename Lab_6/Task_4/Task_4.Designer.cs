@@ -33,10 +33,10 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -104,20 +104,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Виберіть місто:";
             // 
-            // radioButton4
+            // radioButton7
             // 
-            this.radioButton4.Location = new System.Drawing.Point(6, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton4.Size = new System.Drawing.Size(183, 24);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Харків";
-            this.radioButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton7.Location = new System.Drawing.Point(6, 88);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton7.Size = new System.Drawing.Size(183, 24);
+            this.radioButton7.TabIndex = 3;
+            this.radioButton7.Text = "Запоріжжя";
+            this.radioButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.Location = new System.Drawing.Point(6, 65);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton6.Size = new System.Drawing.Size(183, 24);
+            this.radioButton6.TabIndex = 2;
+            this.radioButton6.Text = "Одеса";
+            this.radioButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // radioButton5
             // 
+            this.radioButton5.Checked = true;
             this.radioButton5.Location = new System.Drawing.Point(6, 42);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -128,29 +139,16 @@
             this.radioButton5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // radioButton4
             // 
-            this.radioButton6.Location = new System.Drawing.Point(6, 65);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton6.Size = new System.Drawing.Size(183, 24);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Одеса";
-            this.radioButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.Location = new System.Drawing.Point(6, 88);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton7.Size = new System.Drawing.Size(183, 24);
-            this.radioButton7.TabIndex = 3;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Запоріжжя";
-            this.radioButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 19);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radioButton4.Size = new System.Drawing.Size(183, 24);
+            this.radioButton4.TabIndex = 0;
+            this.radioButton4.Text = "Харків";
+            this.radioButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
