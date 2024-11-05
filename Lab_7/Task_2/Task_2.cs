@@ -19,7 +19,6 @@ namespace Task_2
 
         private void Button_Click(object sender, EventArgs e)
         {
-            // Перевіряємо, яка кнопка була натиснута
             Button clickedButton = sender as Button;
             if (clickedButton != null)
             {
