@@ -19,52 +19,37 @@ namespace Task_3
 
         private void label1_DoubleClick(object sender, EventArgs e)
         {
-            Label label = sender as Label;
-
-            if (label != null)
+            if (label1.Font.Italic)
             {
-                if (label.Font.Italic)
-                {
-                    label.Font = new Font(label.Font, FontStyle.Regular);
-                }
-                else
-                {
-                    label.Font = new Font(label.Font, FontStyle.Italic);
-                }
+                label1.Font = new Font(label1.Font, FontStyle.Regular);
+            }
+            else
+            {
+                label1.Font = new Font(label1.Font, FontStyle.Italic);
             }
         }
 
         private void label2_DoubleClick(object sender, EventArgs e)
         {
-            Label label = sender as Label;
-
-            if (label != null)
+            if (label2.Font.Italic)
             {
-                if (label.Font.Italic)
-                {
-                    label.Font = new Font(label.Font, FontStyle.Regular);
-                }
-                else
-                {
-                    label.Font = new Font(label.Font, FontStyle.Italic);
-                }
+                label2.Font = new Font(label2.Font, FontStyle.Regular);
+            }
+            else
+            {
+                label2.Font = new Font(label2.Font, FontStyle.Italic);
             }
         }
 
         private void label3_DoubleClick(object sender, EventArgs e)
         {
-            Label label = sender as Label;
-
-            if (label != null)
+            if (label3.Font.Italic)
             {
-                if (label.Font.Italic)
-                {
-                    label.Font = new Font(label.Font, FontStyle.Regular);
-                }
-                else
-                {
-                    label.Font = new Font(label.Font, FontStyle.Italic);
-                }
+                label3.Font = new Font(label3.Font, FontStyle.Regular);
+            }
+            else
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Italic);
             }
         }
     }
