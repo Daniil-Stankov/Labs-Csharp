@@ -15,10 +15,6 @@ namespace Task_2
         public Task_2()
         {
             InitializeComponent();
-
-            button1.Click += Button_Click;
-            button2.Click += Button_Click;
-            button3.Click += Button_Click;
         }
 
         private void Button_Click(object sender, EventArgs e)
