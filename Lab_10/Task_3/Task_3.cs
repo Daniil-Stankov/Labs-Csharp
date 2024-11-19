@@ -24,20 +24,20 @@ namespace Task_3
         {
             using (var dialog = new FolderBrowserDialog())
             {
-                dialog.Description = "Выберите папку с изображениями";
+                dialog.Description = "Оберіть папку з зображеннями";
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = dialog.SelectedPath;
                     label1.Text = selectedPath;
 
-                    // Получение списка файлов с изображениями
+                    // Отримання списку файлів
                     imageFiles = Directory.GetFiles(selectedPath, "*.jpg")
                         .Concat(Directory.GetFiles(selectedPath, "*.png"))
                         .Concat(Directory.GetFiles(selectedPath, "*.bmp"))
                         .ToList();
 
-                    // Заполнение ListBox с названиями файлов
+                    // Заповнення лістБокс назвами
                     listBox1.Items.Clear();
                     foreach (var file in imageFiles)
                     {
@@ -47,7 +47,7 @@ namespace Task_3
 
                     if (imageFiles.Count == 0)
                     {
-                        MessageBox.Show("В выбранной папке нет изображений!", "Ошибка");
+                        MessageBox.Show("У обраній папці немає зображень!", "Помилка");
                     }
                 }
             }
