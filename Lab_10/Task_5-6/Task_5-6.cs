@@ -27,14 +27,12 @@ namespace Task_5_6
         {
             if (isRunning)
             {
-                // Зупинка таймера
                 timer1.Stop();
                 button1.Text = "Старт";
                 isRunning = false;
             }
             else
             {
-                // Встановлення інтервалу для зміни кнопки
                 changeInterval = (int)(numericUpDown1.Value * 60 + numericUpDown2.Value); // Інтервал у секундах
 
                 if (changeInterval > 0)
@@ -80,9 +78,12 @@ namespace Task_5_6
 
         private void ChangeButtonSize()
         {
-            // Зміна розмірів кнопки на випадкові значення
-            button1.Width = new Random().Next(75, 125);
-            button1.Height = new Random().Next(25, 50);
+            button1.Width += 10;
+            button1.Height += 10;
+
+            // Щоб кнопка не ставала занадто великою
+            if (button1.Width > 81) button1.Width = 61;
+            if (button1.Height > 43) button1.Height = 23; 
         }
     }
 }

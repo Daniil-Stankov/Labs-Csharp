@@ -28,7 +28,7 @@ namespace Task_4
                 // Щомісячна процентна ставка
                 double monthlyInterestRate = annualInterestRate / 12 / 100;
 
-                // Розрахунок щомісячного платежу (аннуїтетний платіж)
+                // Розрахунок щомісячного платежу
                 double monthlyPayment = loanAmount *
                                         (monthlyInterestRate * Math.Pow(1 + monthlyInterestRate, termMonths)) /
                                         (Math.Pow(1 + monthlyInterestRate, termMonths) - 1);
@@ -44,7 +44,7 @@ namespace Task_4
                     // Основний борг
                     double principal = monthlyPayment - interest;
 
-                    // Додавання рядка в ListView
+                    // Додавання рядка
                     ListViewItem item = new ListViewItem(month.ToString());
                     item.SubItems.Add(remainingLoan.ToString("F2")); // Залишок боргу
                     item.SubItems.Add(interest.ToString("F2"));      // Відсотки

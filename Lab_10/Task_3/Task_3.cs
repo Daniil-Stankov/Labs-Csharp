@@ -29,7 +29,7 @@ namespace Task_3
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = dialog.SelectedPath;
-                    label1.Text = selectedPath; // Отображение выбранного пути в label1
+                    label1.Text = selectedPath;
 
                     // Получение списка файлов с изображениями
                     imageFiles = Directory.GetFiles(selectedPath, "*.jpg")

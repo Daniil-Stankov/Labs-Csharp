@@ -106,10 +106,10 @@ namespace Lab_10
                 switch (speed)
                 {
                     case "x1":
-                        slideInterval = 10000; // 10 секунда
+                        slideInterval = 10000; // 10 секунд
                         break;
                     case "x2":
-                        slideInterval = 5000;  // 5 секунди
+                        slideInterval = 5000;  // 5 секунд
                         break;
                     case "x3":
                         slideInterval = 3000;  // 3 секунди
