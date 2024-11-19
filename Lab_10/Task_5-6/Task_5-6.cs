@@ -65,7 +65,6 @@ namespace Task_5_6
                 elapsedMinutes++;
             }
 
-            // Оновлення тексту Label1
             label1.Text = $"{elapsedMinutes:D2} : {elapsedSeconds:D2}";
 
             // Зміна кнопки кожен раз, коли минув встановлений інтервал
