@@ -12,6 +12,9 @@ namespace Lab_9
 {
     public partial class Task_1 : Form
     {
+        private const double rate = 0.44;
+        private const double reverse_rate = 1/rate;
+
         public Task_1()
         {
             InitializeComponent();
@@ -64,7 +67,6 @@ namespace Lab_9
         {
             if (double.TryParse(textBox1.Text, out double amount))
             {
-                double rate = 0.44;
                 double result = amount * rate;
                 label2.Text = $"Сума у молдавських леях: {result:F2}"; // Вивід з двома знаками після коми
             }
@@ -83,8 +85,8 @@ namespace Lab_9
         {
             if (double.TryParse(textBox2.Text, out double amount))
             {
-                double rate = 1 / 0.44; // Зворотний курс
-                double result = amount * rate;
+                
+                double result = amount * reverse_rate;
                 label4.Text = $"Сума у гривнях: {result:F2}"; // Вивід з двома знаками після коми
             }
             else
