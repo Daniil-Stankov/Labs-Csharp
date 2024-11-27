@@ -65,6 +65,13 @@ namespace Task_8
                 isValid = false;
             }
 
+            // Перевірка наявності email у базі даних
+            if (isValid && EmailExists(email))
+            {
+                label8.Text = "Ця електронна адреса вже зареєстрована.";
+                isValid = false;
+            }
+
             // Якщо всі перевірки пройдені
             if (isValid)
             {
@@ -77,6 +84,30 @@ namespace Task_8
                 loginForm.Show();
                 this.Hide();
                 loginForm.FormClosed += (s, args) => this.Show();
+            }
+        }
+
+        // Метод для перевірки наявності email у базі даних
+        private bool EmailExists(string email)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string checkEmailQuery = "SELECT COUNT(*) FROM userdatabase WHERE email = @email";
+                    using (MySqlCommand command = new MySqlCommand(checkEmailQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@email", email);
+                        int count = Convert.ToInt32(command.ExecuteScalar()); // Повертає кількість збігів
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Сталася помилка при перевірці email: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true; // Вважаємо, що email існує для безпеки, якщо сталася помилка
             }
         }
 
