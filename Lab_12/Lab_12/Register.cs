@@ -14,9 +14,11 @@ namespace Lab_12
 {
     public partial class Register : Form
     {
+        private Dictionary<string, (string Email, string Password)> registeredUsers;
         public Register()
         {
             InitializeComponent();
+            registeredUsers = new Dictionary<string, (string Email, string Password)>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,6 +31,13 @@ namespace Lab_12
             string email = textBox2.Text.Trim();
             string password = textBox3.Text.Trim();
             string confirmPassword = textBox4.Text.Trim();
+
+            LoadUserData();
+            if (registeredUsers.ContainsKey(username) || registeredUsers.Any(x => x.Value.Email == email))
+            {
+                MessageBox.Show("Користувач вже існує.");
+                return;
+            }
 
             // Перевірка полів
             bool isValid = true;
@@ -109,5 +118,25 @@ namespace Lab_12
             loginForm.FormClosed += (s, args) => this.Show();
         }
 
+        private void LoadUserData()
+        {
+            string filePath = "users.txt";
+            registeredUsers.Clear();
+            if (File.Exists(filePath))
+            {
+                foreach (var line in File.ReadAllLines(filePath))
+                {
+                    string[] parts = line.Split('|');
+                    if (parts.Length == 3)
+                    {
+                        string username = parts[0];
+                        string email = parts[1];
+                        string password = parts[2];
+                        registeredUsers[username] = (email, password); // Зберігаємо username
+                        registeredUsers[email] = (username, password); // Зберігаємо email
+                    }
+                }
+            }
+        }
     }
 }
