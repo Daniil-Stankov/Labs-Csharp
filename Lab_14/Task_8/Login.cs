@@ -15,7 +15,7 @@ namespace Task_8
 {
     public partial class Login : Form
     {
-        private string connectionString = "Server=localhost;Database=Users;User ID=root;Password=1234;"; // Заміни на свої дані для підключення
+        private string connectionString = "Server=localhost;Database=Users;User ID=root;Password=2602;"; // Заміни на свої дані для підключення
 
         public Login()
         {

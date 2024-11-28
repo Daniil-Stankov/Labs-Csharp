@@ -13,7 +13,7 @@ namespace Task_2
             OutputEncoding = Encoding.UTF8;
             InputEncoding = Encoding.UTF8;
 
-            string constring = "server=localhost;uid=root;pwd=1234;database=landmanagement";
+            string constring = "server=localhost;uid=root;pwd=2602;database=landmanagement";
 
             using (MySqlConnection con = new MySqlConnection(constring))
             {

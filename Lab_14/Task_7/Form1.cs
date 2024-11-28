@@ -13,7 +13,7 @@ namespace Task_7
 {
     public partial class Form1 : Form
     {
-        string constring = "server=localhost;uid=root;pwd=1234;database=LandManagement";
+        string constring = "server=localhost;uid=root;pwd=2602;database=LandManagement";
         DataTable currentTable = new DataTable();
         string selectedTable;
 

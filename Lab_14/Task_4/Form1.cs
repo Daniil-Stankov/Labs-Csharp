@@ -14,7 +14,7 @@ namespace Task_4
 {
     public partial class Form1 : Form
     {
-        string constring = "server=localhost;uid=root;pwd=1234;database=landmanagement";
+        string constring = "server=localhost;uid=root;pwd=2602;database=landmanagement";
         DataTable currentTable = new DataTable();
         private bool sortAscending = true;  // Для визначення напрямку сортування
 
@@ -98,25 +98,20 @@ namespace Task_4
         // Відображення даних у вигляді форми
         private void DisplayFormular()
         {
-            panel1.Controls.Clear();
+            richTextBox1.Clear();
             dataGridView1.Visible = false;
-            panel1.Visible = true;
+            richTextBox1.Visible = true;
 
-            int yPosition = 10;
+            // Формуємо заголовки таблиці
+            string header = string.Join("\t", currentTable.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
+            richTextBox1.AppendText(header + Environment.NewLine);
+            richTextBox1.AppendText(new string('-', 80) + Environment.NewLine); // Роздільна лінія
+
+            // Додаємо рядки таблиці
             foreach (DataRow row in currentTable.Rows)
             {
-                foreach (DataColumn col in currentTable.Columns)
-                {
-                    Label lbl = new Label
-                    {
-                        Text = $"{col.ColumnName}: {row[col]}",
-                        Location = new Point(10, yPosition),
-                        AutoSize = true
-                    };
-                    panel1.Controls.Add(lbl);
-                    yPosition += 30;
-                }
-                yPosition += 20; // Відстань між об'єктами
+                string rowData = string.Join("\t", row.ItemArray.Select(item => item.ToString()));
+                richTextBox1.AppendText(rowData + Environment.NewLine);
             }
         }
 

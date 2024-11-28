@@ -16,7 +16,7 @@ namespace Task_8
     public partial class Register : Form
     {
         // Параметри підключення до бази даних
-        private string connectionString = "Server=localhost;Database=Users;User ID=root;Password=1234;";
+        private string connectionString = "Server=localhost;Database=Users;User ID=root;Password=2602;";
 
         public Register()
         {
