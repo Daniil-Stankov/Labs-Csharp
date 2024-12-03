@@ -1,0 +1,31 @@
+CREATE DATABASE LandManagement;
+USE LandManagement;
+
+-- Таблиця Підприємство
+CREATE TABLE Підприємство (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    найменування VARCHAR(100) NOT NULL,
+    розрахунковий_рахунок VARCHAR(30) NOT NULL UNIQUE,
+    річний_дохід DECIMAL(15, 2) NOT NULL
+);
+
+-- Таблиця ЗемельнаДілянка
+CREATE TABLE ЗемельнаДілянка (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    шифр_ділянки VARCHAR(20) NOT NULL UNIQUE,
+    площа DECIMAL(10, 2) NOT NULL,
+    вартість DECIMAL(15, 2) NOT NULL,
+    вид_грунту VARCHAR(50) NOT NULL
+);
+
+-- Таблиця ЗемлеВикористання (зв'язувальна таблиця)
+CREATE TABLE ЗемлеВикористання (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    підприємство_id INT NOT NULL,
+    земельна_ділянка_id INT NOT NULL,
+    вид_використання ENUM('володіння', 'оренда') NOT NULL,
+    термін_від DATE NOT NULL,
+    термін_до DATE,
+    FOREIGN KEY (підприємство_id) REFERENCES Підприємство(id),
+    FOREIGN KEY (земельна_ділянка_id) REFERENCES ЗемельнаДілянка(id)
+);

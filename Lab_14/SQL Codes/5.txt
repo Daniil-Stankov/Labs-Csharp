@@ -1,0 +1,17 @@
+-- Створення бази даних
+CREATE DATABASE IF NOT EXISTS Users;
+
+-- Вибір бази даних
+USE Users;
+
+-- Створення таблиці userdatabase
+CREATE TABLE IF NOT EXISTS userdatabase (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,  -- Ідентифікатор користувача (уникальний)
+    username VARCHAR(50) NOT NULL,            -- Ім'я користувача
+    email VARCHAR(100) NOT NULL UNIQUE,       -- Електронна пошта (унікальна)
+    password VARCHAR(255) NOT NULL            -- Пароль (зберігається як хешований)
+);
+
+-- Додавання індексів для покращення продуктивності (не обов'язково, але корисно)
+CREATE INDEX idx_username ON userdatabase(username);
+CREATE INDEX idx_email ON userdatabase(email);
